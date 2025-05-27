@@ -1,0 +1,109 @@
+---
+title: '使用Firebase快速创建博客'
+date: '2025-05-20'
+lastmod: '2025-05-20'
+tags: ['next-js', 'tailwind', 'firebase', 'blog']
+draft: false
+summary: '使用Firebase工具和Tailwind模版，快速建立自己的独立博客。'
+images: ['/static/images/twitter-card.png']
+---
+
+## Introduction
+
+Firebase简单来说就是云化的vscode，通过不同的模版入口，可以省却不少自建开发环境的麻烦。本文以自建独立blog为例，来说明如何使用Firebase进行web开发。
+
+<TOCInline toc={props.toc} exclude="Introduction" />
+
+## 选择合适的blog模版
+
+按照以下标准，我挑选了[Tailwind Blog](https://vercel.com/templates/next.js/tailwind-css-starter-blog)作为基础。
+
+- 适合初学者
+- 框架是Next.js
+- 对接Markdown格式
+- 不考虑复杂的CMS
+
+大家可以从[博客模版](https://vercel.com/templates?framework=next.js&type=blog)中，按照自己的标准挑选适合的模版。
+
+为了方便修改和管理代码，先fork了一份[Tailwind github代码](https://github.com/timlrx/tailwind-nextjs-starter-blog)在自己账号下。
+
+## 创建Firebase工作空间
+
+打开[Firebase Studio](https://idx.google.com/)
+
+![cover](/static/images/building-website/idx-cover.png)
+从Import Repo进入，输入前面fork的代码库URL，以及工作空间的名字。
+![import](/static/images/building-website/idx-import.png)
+然后，Firebase进入准备阶段；等待一会儿，就可以正式进入工作空间。
+![prepare](/static/images/building-website/idx-prepare.png)
+一旦成功进入后，后面就可以从Firebase Studio的首页直接选择并打开。
+![open](/static/images/building-website/idx-open.png)
+
+## 环境配置
+
+进入工作空间后，右下角会自动出现一个notification，这是在Firebase中进行web预览的必须配置。
+![configuration](/static/images/building-website/idx-configuration.png)
+
+点击Yes，系统会自动生成dev.nix配置文件。
+
+```nix:.idx/dev.nix
+{pkgs}: {
+  channel = "stable-24.05";
+  packages = [
+    pkgs.nodejs_20
+  ];
+  idx.extensions = [
+
+  ];
+  idx.previews = {
+    enable = true;
+    previews = {
+      web = {
+        command = [
+          "npm"
+          "run"
+          "dev"
+          "--"
+          "--port"
+          "$PORT"
+          "--hostname"
+          "0.0.0.0"
+        ];
+        manager = "web";
+      };
+    };
+  };
+}
+```
+
+然后，重建开发环境。
+![rebuild](/static/images/building-website/idx-rebuild.png)
+
+重建完成后，进入工作空间，就可以正常进行编辑和预览了。
+![enter](/static/images/building-website/idx-enter.png)
+
+## 自定义博客
+
+通过更改以下文件，实现自定义信息修改。
+
+- data/siteMetadata.js: 可以修改title，author， headerTitle， description， email, youtube等。
+- data/authors/default.mdx：可以修改About页面的个人照片、简介。
+- data/projectsData.ts：定制需要展示的项目。
+- data/headerNavLinks.ts：定制顶部浏览菜单。
+- data/blog/\*：在这个目录下可以增加/修改Markdown格式的博客文件（mdx扩展名）。
+
+## 结论
+
+虽然Firebase当前还是preview版本，但这种云编辑环境总体上是可用的；好处也很明显：免搭环境，方便跨终端使用。
+使用过程中，也发现一些槽点（不完全是Firebase问题，也有Tailwind项目问题）：
+
+- 一旦长时间不使用，用Firebase Studio会断开连接，需要返回首页重新进入项目空间，耽误几十秒。
+- web预览刷新/响应比本地部署的慢。
+- 对已使用图片的替换，一直在web预览中不更新。
+- data/siteMetadata.js中的siteLogo配置项不生效，替换data/logo.svg才能生效。
+
+## 参考
+
+[Tailwind CSS Blog](https://vercel.com/templates/next.js/tailwind-css-starter-blog)
+
+[Firebase](https://firebase.google.com/docs/studio)
