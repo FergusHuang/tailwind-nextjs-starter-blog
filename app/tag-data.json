@@ -1,6 +1,8 @@
 {
-  "next-js": 6,
-  "tailwind": 3,
+  "next-js": 7,
+  "tailwind": 4,
+  "firebase": 1,
+  "blog": 1,
   "guide": 5,
   "feature": 2,
   "multi-author": 1,

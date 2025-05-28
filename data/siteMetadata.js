@@ -3,7 +3,7 @@ const siteMetadata = {
   title: "Fergus's Blog",
   author: 'Fergus Huang',
   headerTitle: `FergusBlog`,
-  description: 'A blog created by Fergus Huang with Next.js and Tailwind.css.',
+  description: 'Share the details and moments from my solo development process.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
@@ -49,11 +49,11 @@ const siteMetadata = {
     //   googleAnalyticsId: '', // e.g. G-XXXXXXX
     // },
   },
-  // newsletter: {
-  //   // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus, beehive
-  //   // Please add your .env file and modify it according to your selection
-  //   provider: 'buttondown',
-  // },
+  newsletter: {
+    // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus, beehive
+    // Please add your .env file and modify it according to your selection
+    provider: 'buttondown',
+  },
   // comments: {
   //   // If you want to use an analytics provider you have to add it to the
   //   // content security policy in the `next.config.js` file.
