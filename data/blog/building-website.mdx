@@ -130,3 +130,31 @@ tailwind项目支持Github Pages/Vercel/Netlify/docker等多种发布方式，�
 [Tailwind CSS Blog](https://vercel.com/templates/next.js/tailwind-css-starter-blog)
 
 [Firebase](https://firebase.google.com/docs/studio)
+
+## FAQ
+
+1. 意外关闭web预览窗口，如何重新打开？
+
+Ctrl+Shift+P，选择firebase studio: show web preview。
+![show-preview](/static/images/building-website/idx-show-preview.png)
+
+1. 如何关闭左下角的N字图标？
+
+其实没有必要专门关闭，在生产环境中不会出现。
+
+1. 如何设置博客封面图片？
+
+在mdx文件开头增加：
+
+```
+...
+images: [图片位置]
+layout: PostBanner
+...
+```
+
+1. Markdown如何设置图片，点击后显示大图？
+
+```
+[![image](small.jpg)](large.jpg)
+```
