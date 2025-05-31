@@ -121,7 +121,7 @@ tailwind项目支持Github Pages/Vercel/Netlify/docker等多种发布方式，�
 使用过程中，也发现一些槽点（不完全是Firebase问题，也有Tailwind项目问题）：
 
 - 一旦长时间不使用，用Firebase Studio会断开连接，需要返回首页重新进入项目空间，耽误几十秒。
-- web预览刷新/响应比本地部署的慢。
+- web预览刷新/响应比本地部署的慢，有时候甚至不刷新，只能使用Hard Restart。
 - 对已使用图片的替换，一直在web预览中不更新。
 - data/siteMetadata.js中的siteLogo配置项不生效，替换data/logo.svg才能生效。
 
@@ -138,13 +138,11 @@ tailwind项目支持Github Pages/Vercel/Netlify/docker等多种发布方式，�
 Ctrl+Shift+P，选择firebase studio: show web preview。
 ![show-preview](/static/images/building-website/idx-show-preview.png)
 
-1. 如何关闭左下角的N字图标？
+2. 如何关闭左下角的N字图标？
 
 其实没有必要专门关闭，在生产环境中不会出现。
 
-1. 如何设置博客封面图片？
-
-在mdx文件开头增加：
+3. 如何设置博客封面图片？在mdx文件开头增加：
 
 ```
 ...
@@ -153,7 +151,7 @@ layout: PostBanner
 ...
 ```
 
-1. Markdown如何设置图片，点击后显示大图？
+4. Markdown如何设置图片，点击后显示大图？
 
 ```
 [![image](small.jpg)](large.jpg)
