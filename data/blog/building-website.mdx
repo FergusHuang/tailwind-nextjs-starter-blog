@@ -1,50 +1,50 @@
 ---
-title: '使用Firebase快速创建博客'
+title: 'Build a Blog Fast Using Firebase'
 date: '2025-05-20'
 lastmod: '2025-05-28'
 tags: ['next-js', 'tailwind', 'firebase', 'blog']
 draft: false
-summary: '使用Firebase工具和Tailwind模版，快速建立自己的独立博客。'
+summary: 'Quickly build your own independent blog using Firebase tools and Tailwind templates.'
 images: ['/static/images/building-website/idx-cover.png']
 ---
 
 ## Introduction
 
-Firebase简单来说就是云化的vscode，通过不同的模版入口，可以省却不少自建开发环境的麻烦。本文以自建独立blog为例，来说明如何使用Firebase进行web开发。
+Firebase Studio can be simply described as a cloud-based VSCode. By using different template entry points, it saves a lot of trouble in setting up a development environment. This article takes building an independent blog as an example to demonstrate how to use Firebase Studio for web development.
 
 <TOCInline toc={props.toc} exclude="Introduction" />
 
-## 选择合适的blog模版
+## Select the Appropriate Blog Template
 
-按照以下标准，我挑选了[Tailwind Blog](https://vercel.com/templates/next.js/tailwind-css-starter-blog)作为基础。
+I selected [Tailwind Blog](https://vercel.com/templates/next.js/tailwind-css-starter-blog) as the basis according to the following criteria.
 
-- 适合初学者
-- 框架是Next.js
-- 对接Markdown格式
-- 不考虑复杂的CMS
+- Easy for beginners
+- Using Next.js as the framework
+- Supporting Markdown content
+- Not considering complex CMS
 
-大家可以从[博客模版](https://vercel.com/templates?framework=next.js&type=blog)中，按照自己的标准挑选适合的模版。
+Everyone can choose a suitable template from the [blog templates](https://vercel.com/templates?framework=next.js&type=blog) according to your own criteria.
 
-为了方便修改和管理代码，先fork了一份[Tailwind github代码](https://github.com/timlrx/tailwind-nextjs-starter-blog)在自己账号下。
+To facilitate code modification and management, I first forked a copy of the [Tailwind GitHub repository](https://github.com/timlrx/tailwind-nextjs-starter-blog) to my own account.
 
-## 创建Firebase工作空间
+## Create a Firebase Workspace
 
-打开[Firebase Studio](https://idx.google.com/)
+Open [Firebase Studio](https://idx.google.com/)
 
 [![cover](/static/images/building-website/idx-cover.png)](/static/images/building-website/idx-cover.png)
-从Import Repo进入，输入前面fork的代码库URL，以及工作空间的名字。
+From "Import Repo" enter the URL of the previously forked repository and the name of the workspace.
 ![import](/static/images/building-website/idx-import.png)
-然后，Firebase进入准备阶段；等待一会儿，就可以正式进入工作空间。
+Then, Firebase Studio enters the preparation phase; after waiting for a while, you can officially access the workspace.
 ![prepare](/static/images/building-website/idx-prepare.png)
-一旦成功进入后，后面就可以从Firebase Studio的首页直接选择并打开。
+Once you have successfully entered, you can directly select and open it from the Firebase Studio homepage thereafter.
 ![open](/static/images/building-website/idx-open.png)
 
-## 环境配置
+## Configure
 
-进入工作空间后，右下角会自动出现一个notification，这是在Firebase中进行web预览的必须配置。
+After entering the workspace, a notification will automatically appear in the bottom right corner; this is a necessary configuration for web preview in Firebase Studio.
 ![configuration](/static/images/building-website/idx-configuration.png)
 
-点击Yes，系统会自动生成dev.nix配置文件。
+After clicking the Yes button, system will automatically generate the dev.nix configuration file.
 
 ```nix:.idx/dev.nix
 {pkgs}: {
@@ -76,56 +76,56 @@ Firebase简单来说就是云化的vscode，通过不同的模版入口，可以
 }
 ```
 
-然后，重建开发环境。
+Then sytem will rebuild the development environment.
 ![rebuild](/static/images/building-website/idx-rebuild.png)
 
-重建完成后，进入工作空间，就可以正常进行编辑和预览了。
+Once the rebuild is complete, entering the workspace you will be allowed to edit and preview normally.
 ![enter](/static/images/building-website/idx-enter.png)
 
-## 自定义博客
+## Personalize Your Blog Profile
 
-通过更改以下文件，实现自定义信息修改。
+You can customize your blog profile by modifying the following files.
 
-- data/siteMetadata.js: 可以修改title，author， headerTitle， description， email, youtube等。
-- data/authors/default.mdx：可以修改About页面的个人照片、简介。
-- data/projectsData.ts：定制需要展示的项目。
-- data/headerNavLinks.ts：定制顶部浏览菜单。
-- data/blog/\*：在这个目录下可以增加/修改Markdown格式的博客文件（mdx扩展名）。
+- data/siteMetadata.js: You can change the title，author， headerTitle， description， email, youtube and more。
+- data/authors/default.mdx：You can update the personal photo and bio on the About page。
+- data/projectsData.ts：customize the projects you want to showcase.
+- data/headerNavLinks.ts：customize navigation links.
+- data/blog/\*：In this directory, you can add or modify blog posts in Markdown format (with the .mdx extension).
 
 ## Deploy
 
-tailwind项目支持Github Pages/Vercel/Netlify/docker等多种发布方式，这里只介绍最方便的Vercel发布。
+Tailwind project supports many deployment methods such as Github pages, Vercel, Netlify and docker. Here, we will only cover the easiest deployment method via Vercel.
 
-打开[Vercel](https://vercel.com/)。
+Open [Vercel](https://vercel.com/)。
 ![project](/static/images/building-website/vercel-project.png)
 
-选择自己的Tailwind github项目，并导入。
+Select your Tailwind github project and import it.
 ![github](/static/images/building-website/vercel-github.png)
 ![import](/static/images/building-website/vercel-import.png)
 
-开始发布。
+Start the deployment process.
 ![deploy](/static/images/building-website/vercel-deploy.png)
 
-发布过程需要等待一段时间，过程可以通过编译日志进行观察，如果有错误，也可以根据Error进行修改。
+The deployment will take some time. You can monitor the progress through the build logs. And if there are any errors, you can fix them based on the error messages.
 ![procedure](/static/images/building-website/vercel-procedure.png)
 
-成功后，会弹出祝贺的界面。
+Once successful, a congratulation window will appear.
 ![congratulations](/static/images/building-website/vercel-congratulations.png)
 
-最后，可以通过Vercel提供的免费域名进行访问。
+Finally, you can access the website through the free domain provided by Vercel.
 ![domain](/static/images/building-website/vercel-domain.png)
 
-## 结论
+## Conclusion
 
-虽然Firebase当前还是preview版本，但这种云编辑环境总体上是可用的；好处也很明显：免搭环境，方便跨终端使用。
-使用过程中，也发现一些槽点（不完全是Firebase问题，也有Tailwind项目问题）：
+Although Firebase Studio is currently still in preview, this cloud-based editing environment is generally usable. Its advantages are clear: no need to set up environments, convenient for cross-device use.
+During the process, some issues were also found(not entirely Firebase's fault, but also related to the Tailwind project):
 
-- 一旦长时间不使用，用Firebase Studio会断开连接，需要返回首页重新进入项目空间，耽误几十秒。
-- web预览刷新/响应比本地部署的慢，有时候甚至不刷新，只能使用Hard Restart。
-- 对已使用图片的替换，一直在web预览中不更新。
-- data/siteMetadata.js中的siteLogo配置项不生效，替换data/logo.svg才能生效。
+- If unused for a long time, Firebase Studio disconnects, requiring you to return to the homepage and re-enter the project, causing a delay of several tens of seconds.
+- Web preview and repsonse are slower than local deployment. Sometimes it doesn't refresh at all and requires a hard restart.
+- Replacing images already in use does not update in the web preview.
+- The siteLogo configuration in data/siteMetadata.js doesn't take effect. Only replacing data/logo.svg works.
 
-## 参考
+## References
 
 [Tailwind CSS Blog](https://vercel.com/templates/next.js/tailwind-css-starter-blog)
 
@@ -133,25 +133,27 @@ tailwind项目支持Github Pages/Vercel/Netlify/docker等多种发布方式，�
 
 ## FAQ
 
-1. 意外关闭web预览窗口，如何重新打开？
+1. How to reopen the web preview window after accidentally closing it?
 
-Ctrl+Shift+P，选择firebase studio: show web preview。
+Ctrl+Shift+P, choose firebase studio: show web preview.
 ![show-preview](/static/images/building-website/idx-show-preview.png)
 
-2. 如何关闭左下角的N字图标？
+2. How to hide the indicator on the bottom left of the webpage?
 
-其实没有必要专门关闭，在生产环境中不会出现。
+Actually, there is no need to close the indicator; it won't appear in the production environment.
 
-3. 如何设置博客封面图片？在mdx文件开头增加：
+3. How to add a cover image to your blog?
+
+Add at the beginning of the mdx file:
 
 ```
 ...
-images: [图片位置]
+images: [image path]
 layout: PostBanner
 ...
 ```
 
-4. Markdown如何设置图片，点击后显示大图？
+4. How to set an image in Markdown to open a larger view when clicked?
 
 ```
 [![image](small.jpg)](large.jpg)
