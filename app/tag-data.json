@@ -1,4 +1,6 @@
 {
+  "subdomain": 1,
+  "vercel": 1,
   "next-js": 1,
   "tailwind": 1,
   "firebase": 1,
